@@ -2,7 +2,7 @@ import React from 'react';
 import HeaderBar from './header-bar';
 import Select from 'react-select';
 import SignaturePad from 'react-signature-pad';
-import SortableItemMixin from 'react-sortable-items/SortableItemMixin';
+var SortableItemMixin = require('react-anything-sortable').SortableItemMixin;
 import SliderNativeBootstrap from 'react-bootstrap-native-slider';
 import ReactDatePicker from 'react-datepicker';
 import StarRating from './star-rating';
@@ -196,15 +196,15 @@ let DatePicker = React.createClass({
       internalValue = moment();
     } else {
       value = this.props.defaultValue;
-      
+
       if(this.props.defaultValue !== '' && this.props.defaultValue !== undefined) {
         internalValue = moment(value, 'MM/DD/YYYY');
-      }  
+      }
     }
-    
+
     return {
-      value: value, 
-      internalValue: internalValue, 
+      value: value,
+      internalValue: internalValue,
       placeholder: 'mm/dd/yyyy',
       defaultToday: this.props.data.defaultToday
     };
@@ -256,7 +256,7 @@ let DatePicker = React.createClass({
       props.defaultValue = this.props.defaultValue;
       props.ref = "child_ref_" + this.props.data.field_name;
     }
-    
+
     return this.renderWithSortable(
       <div className="rfb-item">
         { !this.props.mutable &&
@@ -271,7 +271,7 @@ let DatePicker = React.createClass({
           </label>
           <div>
             { this.props.data.readOnly &&
-              <input type="text" 
+              <input type="text"
                 name={props.name}
                 ref={props.ref}
                 readOnly="true"

@@ -15,4 +15,3 @@ ReactDOM.render(
   <DemoBar />,
   document.getElementById('demo-bar')
 )
-

@@ -1,7 +1,7 @@
 import React from 'react';
 import HeaderBar from './header-bar';
 import TextAreaAutosize from 'react-textarea-autosize';
-var SortableItemMixin = require('react-sortable-items/SortableItemMixin')
+import Sortable from 'react-anything-sortable';
 
 export default React.createClass({
   mixins: [SortableItemMixin],
@@ -21,13 +21,13 @@ export default React.createClass({
   render() {
     var headerClasses = 'dynamic-input ' + this.props.data.element + '-input';
 
-    return this.renderWithSortable(
+    return (
       <div>
         <HeaderBar name={this.props.data.text} onDestroy={this.props.onDestroy} onEdit={this.props.onEdit} static={this.props.data.static} required={this.props.data.required} />
-        {this.props.children}
+        <Sortable>
+          {this.props.children}
+        </Sortable>
       </div>
     )
-
   }
-
 })
